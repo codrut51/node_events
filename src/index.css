@@ -22,32 +22,36 @@ code {
   height: 100vh;
 }
 
-.root {
-  width: 100vw;
-  height: 100vh;
-  background-color: gray;
-}
 
 #content {
-  width: 70%;
+  width: 70vw;
   height: 100vh;
   margin: 0 auto;
 }
 
+.root {
+  height: 100vh;
+  background-color: lightyellow;
+}
 .header {
   height: 10vh;
   min-height: 40px;
   float: left;
 }
 
+.header_paper {
+    height: 10vh;
+}
+
+.footer_paper {
+  top: 0;
+  bottom: 0;
+}
+
+
 .body {
-  height: 68.9vh;
+  height: 79vh;
   min-height: 100px;
   float: left;
 }
 
-.paper {
-  height: 10vh;
-  min-width: 75px;
-  min-height: 150px;
-}

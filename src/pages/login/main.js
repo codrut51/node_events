@@ -1,8 +1,8 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
 // import { withStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
+// import Grid from '@material-ui/core/Grid';
+// import Paper from '@material-ui/core/Paper';
 
 // const styles = theme => ({
 //   root: {
@@ -21,8 +21,8 @@ class Main extends React.Component {
   render() {
     return (
       <div id="content">
-        <Grid container className="root" spacing={8}>
-        </Grid>
+        <div className="root" spacing={0}>
+        </div>
       </div>
     );
   }
