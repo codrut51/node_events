@@ -4,13 +4,20 @@ import Body from '../components/content';
 import Footer from '../components/footer';
 
 class Main extends React.Component {
+ 
+  click_listener = (event) => {
+    console.log("Here!");
+  }
+  componentDidMount() {
+    document.addEventListener("click_event", this.click_listener);
+  }
   render() {
     return (
       <div id="content">
         <div className="root" spacing={0}>
             <Header></Header>
-            <Body></Body>
-            <Footer></Footer>
+            {/* <Body></Body>
+            <Footer></Footer> */}
         </div>
       </div>
     );

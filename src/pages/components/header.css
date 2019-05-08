@@ -1,0 +1,11 @@
+#header {
+    width: 80vw;
+    height: 5vh;
+    float: left;
+}
+.left_side {
+    width: 40vw;
+    height: 5vh;
+    background-color: gray;
+    float: left;
+}
