@@ -2,23 +2,6 @@ import React from 'react';
 import Header from '../components/header';
 import Body from '../components/content';
 import Footer from '../components/footer';
-// import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
-// import Grid from '@material-ui/core/Grid';
-// import Paper from '@material-ui/core/Paper';
-
-// const styles = theme => ({
-//   root: {
-//     flexGrow: 1,
-//   },
-//   paper: {
-//     height: "20vh",
-//     minHeight: "150px",
-//   },
-//   control: {
-//     padding: theme.spacing.unit * 2,
-//   },
-// });
 
 class Main extends React.Component {
   render() {
