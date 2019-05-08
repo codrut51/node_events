@@ -22,36 +22,90 @@ code {
   height: 100vh;
 }
 
+/* 
+
+// Main Page css
+// Start
+
+*/
 
 #content {
-  width: 70vw;
+  width: 100vw;
+  height: 100vh;
+}
+
+.root { 
+  width: 80vw;
   height: 100vh;
   margin: 0 auto;
 }
 
-.root {
-  height: 100vh;
-  background-color: lightyellow;
-}
+/* 
+
+// Main Page css
+// End
+
+*/
+
+
+/* 
+
+// Header css
+// Start
+
+*/
+
 .header {
-  height: 10vh;
-  min-height: 40px;
+  width: 80vh;
+  height: 5vh;
   float: left;
 }
 
-.header_paper {
-    height: 10vh;
+.left_side {
+  width: 40vh;
+  height: 5vh;
+  float: left;
 }
 
-.footer_paper {
-  top: 0;
-  bottom: 0;
+.right_side {
+  width: 40vh;
+  height: 5vh;
+  float: left;
 }
+/* 
 
+// Header css
+// End
+
+*/
+/* 
+
+// Content css
+// Start
+
+*/
 
 .body {
-  height: 79vh;
-  min-height: 100px;
+  width: 80vh;
+  height: 90vh;
   float: left;
 }
 
+.body_left_side {
+  width: 20vh;
+  height: 90vh;
+  float: left;
+}
+
+.body_right_side {
+  width: 60vh;
+  height: 90vh;
+  float: left;
+}
+
+/* 
+
+// Content css
+// End
+
+*/

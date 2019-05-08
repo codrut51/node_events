@@ -1,4 +1,7 @@
 import React from 'react';
+import Header from '../components/header';
+import Body from '../components/content';
+import Footer from '../components/footer';
 // import PropTypes from 'prop-types';
 // import { withStyles } from '@material-ui/core/styles';
 // import Grid from '@material-ui/core/Grid';
@@ -22,6 +25,9 @@ class Main extends React.Component {
     return (
       <div id="content">
         <div className="root" spacing={0}>
+            <Header></Header>
+            <Body></Body>
+            <Footer></Footer>
         </div>
       </div>
     );
