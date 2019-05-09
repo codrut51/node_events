@@ -1,0 +1,8 @@
+.users {
+    width: 25%;
+    height: 100%;
+    float: left;
+    background-color: gray;
+    min-width: 100px;
+    min-height: 150px;
+}

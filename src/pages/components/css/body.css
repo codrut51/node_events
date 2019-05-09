@@ -1,0 +1,7 @@
+.body {
+    width: 80vw;
+    height: 90vh;
+    float: left;
+    min-width: 200px;
+    min-height: 135px;
+}
