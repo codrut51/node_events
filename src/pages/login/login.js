@@ -19,6 +19,8 @@ export default class Login extends React.Component {
            document.getElementById("username").value !== '' &&
            document.getElementById("username").value !== null  &&
            document.getElementById("password").value !== "" ) {
+               
+            this.setState({logged : true});
             let secret = "Yzc3YmQ1ZjA2YzE2MzY5NDc4MDdiMjcyNzRjMmM2MzYxZDc3MWIzZmE3OTA3NjQzMmMxNzJlOTRiMjczZTA4MDNhYTk0MTY0MzAzNmZhYmE5NzNjNzUyYWU0NTJlZTA5MTNmOWQzNzdjZTU4YzM3MzM0YThhYmYwYjg3M2FiZmQ=";
             let username = document.getElementById("username").value;
             let password =  window.btoa((document.getElementById("password").value + secret).substring(5,25));//document.getElementById("password").value);
@@ -27,7 +29,6 @@ export default class Login extends React.Component {
             document.getElementById("username").value = "";
             window.localStorage.setItem("username", username);
             window.localStorage.setItem("logged", username);
-            this.updateState();
            }else{
                alert("Please fill in username and/or password!");
            }
@@ -48,8 +49,19 @@ export default class Login extends React.Component {
     }
     updateState() {
         
-        this.setState({view : (
-            <Route
+    }
+    componentWillMount() {
+        if(!this.state.logged)
+        {
+            let username = window.localStorage.getItem("username");
+            if(username !== null &&
+               username !== '') {
+                   this.setState({ logged: true });
+               }
+        }
+    }
+    render() {
+        return (   <Route
             render={ props => this.state.logged ? 
                             <Redirect
                                 to={{
@@ -77,22 +89,7 @@ export default class Login extends React.Component {
                                 </div>
                             </div>
                     }
-          />)});
-    }
-    componentWillMount() {
-        if(!this.state.logged)
-        {
-            let username = window.localStorage.getItem("username");
-            if(username !== null &&
-               username !== '') {
-                   this.setState({ logged: true });
-               }
-        }
-        this.updateState();
-    }
-    render() {
-        return (
-            <div>{this.state.view}</div>
+          />
         );
     }
 }
