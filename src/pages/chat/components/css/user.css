@@ -6,7 +6,8 @@
     border-top: 1.5px solid black;
     color: white;
     text-align: left;
-    user-select: none;   
+    user-select: none; 
+    font-size: 110%;
     -webkit-user-select: none; /* Safari 3.1+ */
     -moz-user-select: none; /* Firefox 2+ */
     -ms-user-select: none;

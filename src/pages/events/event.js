@@ -17,13 +17,22 @@ class EventManager {
     }
 }
 
-let event = new EventManager();
-
-
-function listenEvent(data) {
-    console.log(data);
+class GlobalEvent {
+    static eventManager = null;
+    constructor() {
+        this.getInstance = GlobalEvent.getInstance.bind(this);
+    }
+    
+    static getInstance() {
+        if(this.eventManager == null) {
+            this.eventManager = new EventManager();
+        }
+        return this.eventManager;
+    } 
 }
 
+let globalEvent = new GlobalEvent();
+let event = globalEvent.getInstance();
 
 const addCustomEventListener = (event_name, callback) => {
     event.listen(event_name, callback);
@@ -31,4 +40,6 @@ const addCustomEventListener = (event_name, callback) => {
 const dispatchCustomEvent = (event_name, data) => {
     event.dispatch(event_name, data);
 }
+
+addCustomEventListener("click_listener")
 export {addCustomEventListener, dispatchCustomEvent}

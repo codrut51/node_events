@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./css/user.css"
+import "./css/messages.css"
 
 export default class Messages extends Component {
     

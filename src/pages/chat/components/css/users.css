@@ -11,10 +11,10 @@
     height: 5%;
     float: left;
     min-height: 27px;
-    background-color: aliceblue;
     text-align: center;
     font-style: italic;
     color: rgb(90, 74, 230);
+    border-top-left-radius: 25%;
 }
 .users_content {
     width: 100%;
@@ -24,10 +24,13 @@
     overflow-x: hidden;
     background-color: burlywood;
 }
-.users::-webkit-scrollbar {
+.users_content::-webkit-scrollbar {
     width: 3px;
 }
 
-.users::-webkit-scrollbar-track {
+.users_content::-webkit-scrollbar-track {
     background: #f1f1f1;
+}
+.users_content::-webkit-scrollbar-thumb {
+    background: gray;
 }
