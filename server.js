@@ -9,7 +9,7 @@ io.on('connection', (socket) => {
     users.forEach(user => {
         socket.on(user, function(msg){
             io.emit('custom_event_response', msg);
-        });
+        }); 
     });
 });
 
