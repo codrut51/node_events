@@ -17,7 +17,7 @@ export default class Messages extends Component {
                    <div className="messages_title">
                        <h2 id="message_title">Username: {this.props.title} </h2>
                    </div>
-               })
+               }) 
            }
     }
     render() {

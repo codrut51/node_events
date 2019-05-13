@@ -30,7 +30,7 @@ class Users extends React.Component {
         }
     }
 
-    async componentDidMount() {
+    async componentDidMount() { 
         let arr = this.state.users;
         for(let i = 0; i < 100; i++) {
             let name = "user12341"+i;

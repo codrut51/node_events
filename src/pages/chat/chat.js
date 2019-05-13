@@ -13,7 +13,7 @@ class Chat extends React.Component {
     constructor() {
       super();
       this.userClick = this.userClick.bind(this);
-    }
+    } 
 
     async userClick(event) {
       let userName = event.data.name;

@@ -16,7 +16,7 @@ class Main extends React.Component {
       <div id="content">
         <div className="root">
             <Header></Header>
-            <Body>
+            <Body> 
                 <Login></Login>
             </Body>
             <Header></Header>

@@ -35,7 +35,7 @@ export default class Login extends React.Component {
             this.setState({username: "", password: ""});
             window.localStorage.setItem("username", username);
             window.localStorage.setItem("logged", username);
-           }else{
+           }else{ 
                alert("Please fill in username and/or password!");
            }
     }

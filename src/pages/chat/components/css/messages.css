@@ -14,7 +14,7 @@
     color: rgb(90, 74, 230);
     font-style: oblique;
     border-bottom: 2px solid gray;
-    margin-left: -2px;
+    margin-left: -2px; 
     border-left: 2px solid gray;
     position: relative;
 }
