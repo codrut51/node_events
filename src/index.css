@@ -20,34 +20,14 @@ code {
 #root {
   width: 100vw;
   height: 100vh;
-}
+  min-width: 400px;
+  min-height: 150px;
+} 
 
 .root {
-  width: 100vw;
-  height: 100vh;
-  background-color: gray;
-}
-
-#content {
-  width: 70%;
+  width: 80vw;
   height: 100vh;
   margin: 0 auto;
-}
-
-.header {
-  height: 10vh;
-  min-height: 40px;
-  float: left;
-}
-
-.body {
-  height: 68.9vh;
-  min-height: 100px;
-  float: left;
-}
-
-.paper {
-  height: 10vh;
-  min-width: 75px;
+  min-width: 400px;
   min-height: 150px;
 }
