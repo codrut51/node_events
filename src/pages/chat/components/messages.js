@@ -2,6 +2,25 @@ import React, { Component } from 'react';
 import "./css/messages.css"
 import Button from '@material-ui/core/Button';
 import Message from "./message";
+
+
+function addslashes(str) {
+    str = str.replace(/\\/g, '\\\\');
+    str = str.replace(/\'/g, '\\\'');
+    str = str.replace(/\"/g, '\\"');
+    str = str.replace(/\0/g, '\\0');
+    return str;
+}
+ 
+function stripslashes(str) {
+    str = str.replace(/\\'/g, '\'');
+    str = str.replace(/\\"/g, '"');
+    str = str.replace(/\\0/g, '\0');
+    str = str.replace(/\\\\/g, '\\');
+    return str;
+}
+
+
 export default class Messages extends Component {
     socket = null;
     state = {
@@ -35,10 +54,17 @@ export default class Messages extends Component {
                 this.socket.emit(title, { 
                     message: message
                 });
+                let custMessage = addslashes(message);
+                let key = parseInt(this.state.messages[this.state.messages.length - 1].key) + 1
+                this.state.messages.push(<Message key={key} message={custMessage} name="me"/>)
                 this.setState({message: ""});
+                this.setState({messages: this.state.messages});
            }
     }
-
+    componentDidUpdate() {
+        let messages_body = document.getElementById("messages_body");
+        messages_body.scrollTop = messages_body.scrollHeight;
+    }
     componentDidMount(){
         const { title } = this.props;
         console.log(title);
@@ -53,10 +79,15 @@ export default class Messages extends Component {
             this.socket = this.props.socket;
             this.socket.on(title,this.messages)
             console.log(this.socket);
-            for(let i = 0; i < 20; i++)
+            for(let i = 100; i < 190; i++)
             {
-                this.state.messages.push()
+                let message = "Vivamus ac eros eleifend, commodo erat ut, elementum eros. Morbi ornare tortor sed elit viverra, nec commodo tortor lobortis. Nulla nec elementum tortor. Phasellus diam libero, vestibulum ac pharetra et, imperdiet id risus. Aenean tincidunt quam eu egestas faucibus. Donec gravida neque at ullamcorper dignissim. In finibus, nunc in finibus feugiat, erat eros vehicula leo, nec suscipit augue mi eget lectus."+i;
+                this.state.messages.push(<Message key={i} message={message} name="other"/>);
+                this.setState({messages: this.state.messages })
             }
+            let message = "Vivamus ac eros eleifend, commodo erat ut, elementum eros. Morbi ornare tortor sed elit viverra, nec commodo tortor lobortis. Nulla nec elementum tortor. Phasellus diam libero, vestibulum ac pharetra et, imperdiet id risus. Aenean tincidunt quam eu egestas faucibus. Donec gravida neque at ullamcorper dignissim. In finibus, nunc in finibus feugiat, erat eros vehicula leo, nec suscipit augue mi eget lectus."+190;
+            this.state.messages.push(<Message key={190} message={message} name="me"/>);
+            this.setState({messages: this.state.messages });
         }
     }
 
@@ -71,7 +102,7 @@ export default class Messages extends Component {
                 <div className="messages_title">
                     {this.state.titleComponent}
                 </div>
-                <div className="messages_body">
+                <div id="messages_body">
                     {this.state.messages}
                 </div>
                 <div className="messages_input">

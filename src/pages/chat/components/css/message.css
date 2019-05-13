@@ -1,0 +1,31 @@
+.rowMessage {
+    width: 100%;
+    height: auto;
+    min-height: 30px;
+    float: left;
+    margin-bottom: 20px;
+}
+
+.me {
+    width: auto;
+    min-width: 100px;
+    max-width: 60%;
+    height: auto;
+    min-height: 30px;
+    float: right;
+    background-color: white;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.other {
+    width: auto;
+    min-width: 100px;
+    max-width: 60%;
+    height: auto;
+    min-height: 30px;
+    float: left;
+    background-color: greenyellow;
+    overflow: auto;
+    overflow-x: hidden;
+}
