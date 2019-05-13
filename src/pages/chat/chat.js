@@ -6,7 +6,7 @@ import Messages from "./components/messages";
 
 
 class Chat extends React.Component {
-
+    _isMounted = false;
     state = {
       message_to: "",
     }
@@ -22,7 +22,13 @@ class Chat extends React.Component {
         console.log("state changed!");
       })
     }
+    componentDidMount() {
+      this._isMounted = true;
+    }
 
+    componentWillUnmount() {
+      this._isMounted = false;
+    }
     render() {
       return (
         <div id="content">
