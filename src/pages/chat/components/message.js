@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./css/messages.css"
+import "./css/message.css"
 
 export default class Messages extends Component {
     
@@ -8,8 +8,10 @@ export default class Messages extends Component {
 
     render() {
         return (
-            <div className="message">
-                <p>{this.props.name}</p>
+            <div className="rowMessage">
+                <div className="message">
+                    <p>{this.props.message}</p>
+                </div>
             </div>
         )
     }

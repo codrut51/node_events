@@ -14,7 +14,8 @@
     text-align: center;
     font-style: italic;
     color: rgb(90, 74, 230);
-    border-top-left-radius: 25%;
+    border-bottom: 2px solid gray;
+    margin-top: -1px;
 }
 .users_content {
     width: 100%;

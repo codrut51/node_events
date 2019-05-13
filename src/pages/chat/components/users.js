@@ -1,6 +1,5 @@
 import React from 'react';
 import "./css/users.css"
-import openSocket from 'socket.io-client';
 import User from "./user";
 import { 
     Route,
@@ -37,12 +36,6 @@ class Users extends React.Component {
             arr.push(<User key={i} name={name} onClick={this.props.onClick}/>);
         }
         this.setState({users: arr});
-        let socket =  openSocket("http://localhost:8000");
-        let obj = {
-            'user':  window.localStorage.getItem("username"),
-        }
-        socket.on('custom_event_response', this.eventResponse);
-        socket.emit('new_user', obj); 
         // let usersClass = document.getElementsByClassName("users");
         // let users = null;
         // for(let i = 0; i < usersClass.length; i++) {

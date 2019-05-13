@@ -9,6 +9,7 @@
 .messages_title {
     width: 100%;
     height: 5%;
+    min-height: 27px;
     float: left;
     text-align: left;
     color: rgb(90, 74, 230);
@@ -17,9 +18,59 @@
     margin-left: -2px; 
     border-left: 2px solid gray;
     position: relative;
+    margin-top: -1px;
 }
 
 #message_title { 
-    margin-top: 5px;
     margin-left: 25px;
+}
+
+.messages_body {
+    width: 100%;
+    height: 90%;
+    background-color: bisque;
+    float: left;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.messages_body::-webkit-scrollbar {
+    width: 3px;
+}
+
+.messages_body::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+.messages_body::-webkit-scrollbar-thumb {
+    background: gray;
+}
+
+.messages_input {
+    width: 100%;
+    height: 5%;
+    min-height: 27px;
+    min-width: 300px;
+    float: left;
+    background-color: cadetblue;
+}
+
+#message {
+    width: 70%;
+    height: 100%;
+    float: left;
+    min-width: 210px;
+    border: 0px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-stretch: condensed;
+}
+
+.button_placeholder {
+    width: 30%;
+    height: 100%;
+    float: left;
+}
+
+.message_button {
+   width: stretch;
+   height: stretch;
 }
