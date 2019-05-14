@@ -4,9 +4,13 @@ import Button from '@material-ui/core/Button';
 import Message from "./message";
 
 function addslashes(str) {
+    // eslint-disable-next-line
     str = str.replace(/\\/g, '\\\\');
+    // eslint-disable-next-line
     str = str.replace(/\'/g, '\\\'');
+    // eslint-disable-next-line
     str = str.replace(/\"/g, '\\"');
+    // eslint-disable-next-line
     str = str.replace(/\0/g, '\\0');
     return str;
 }
