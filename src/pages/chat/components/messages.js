@@ -12,13 +12,13 @@ function addslashes(str) {
     return str;
 }
  
-function stripslashes(str) {
-    str = str.replace(/\\'/g, '\'');
-    str = str.replace(/\\"/g, '"');
-    str = str.replace(/\\0/g, '\0');
-    str = str.replace(/\\\\/g, '\\');
-    return str;
-}
+// function stripslashes(str) {
+//     str = str.replace(/\\'/g, '\'');
+//     str = str.replace(/\\"/g, '"');
+//     str = str.replace(/\\0/g, '\0');
+//     str = str.replace(/\\\\/g, '\\');
+//     return str;
+// }
 
 
 export default class Messages extends Component {
@@ -33,25 +33,28 @@ export default class Messages extends Component {
         super();
         this.sendMessage = this.sendMessage.bind(this);
         this.receivedMessage = this.receivedMessage.bind(this);
-        this.messages = this.messages.bind(this);
-    }
-
-    messages(obj) {
-
     }
 
     receivedMessage(obj) {
-
+        const { message } = obj;
+        let custMessage = addslashes(message);
+        let key = parseInt(this.state.messages[this.state.messages.length - 1].key) + 1
+        this.state.messages.push(<Message key={key} message={custMessage}/>)
+        this.setState({messages: this.state.messages});
     }
 
-    async sendMessage(event) {
+    async sendMessage() {
         const { message } = this.state;
         const { title } = this.props;
         if(message !== null &&
            message !== undefined &&
-           message !== "") {
+           message !== "" &&
+           title !== null &&
+           title !== undefined &&
+           title !== "") {
                 console.log(message);
-                this.socket.emit(title, { 
+                this.socket.emit("chat_messages", { 
+                    to: title+"_"+window.localStorage.getItem("username"),
                     message: message
                 });
                 let custMessage = addslashes(message);
@@ -67,7 +70,6 @@ export default class Messages extends Component {
     }
     componentDidMount(){
         const { title } = this.props;
-        console.log(title);
         if(title !== null &&
            title !== '' &&
            title !== undefined)
@@ -77,8 +79,7 @@ export default class Messages extends Component {
                     <h2 id="message_title">Username: {this.props.title} </h2>
             }) 
             this.socket = this.props.socket;
-            this.socket.on(title,this.messages)
-            console.log(this.socket);
+            this.socket.on(window.localStorage.getItem("username")+"_"+title,this.receivedMessage);
             for(let i = 100; i < 190; i++)
             {
                 let message = "Vivamus ac eros eleifend, commodo erat ut, elementum eros. Morbi ornare tortor sed elit viverra, nec commodo tortor lobortis. Nulla nec elementum tortor. Phasellus diam libero, vestibulum ac pharetra et, imperdiet id risus. Aenean tincidunt quam eu egestas faucibus. Donec gravida neque at ullamcorper dignissim. In finibus, nunc in finibus feugiat, erat eros vehicula leo, nec suscipit augue mi eget lectus."+i;
@@ -106,15 +107,17 @@ export default class Messages extends Component {
                     {this.state.messages}
                 </div>
                 <div className="messages_input">
-                    <input type="text" name="message" 
-                           id="message"
-                           value={this.state.message} 
-                           onChange={(e) => this.onChange(e)}
-                           />
-                    <div className="button_placeholder">
-                        <Button variant="contained" color="primary" className="message_button" onClick={(e) => this.sendMessage(e)} >
-                            Send
-                        </Button>
+                    <div className="input_fields">
+                        <input type="text" name="message" 
+                            id="message"
+                            value={this.state.message} 
+                            onChange={(e) => this.onChange(e)}
+                            />
+                        <div className="button_placeholder">
+                            <Button variant="contained" color="primary" className="message_button" onClick={(e) => this.sendMessage(e)} >
+                                <p className="message_button1">Send</p>
+                            </Button>
+                        </div>
                     </div>
                 </div>
             </div>

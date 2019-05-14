@@ -1,33 +1,90 @@
 const io = require('socket.io')();
 
-const User = (name, password) => {
+const User = (name, connected) => {
     let obj = {
         username: name,
-        password: password
+        isConnected: connected
     }
     return obj;
 }
 
 let users = [];
 io.on('connection', (socket) => {
-    console.log("a user is connected!");
     socket.on('disconnect', function(){
         console.log('user disconnected');
+        console.log(socket.id);
+        let found = false;
+        for(let i = 0; i < users.length && !found; i++) {
+            if(users[i].username === socket.id)
+            {
+                found = true;
+                users[i] = User(socket.id, false);
+            }
+        }
+        let connectedUsers = [];
+        users.forEach(user => {
+            if(user.isConnected)
+            {
+                connectedUsers.push(user);
+            }
+        });
+        io.emit('user_connection', {
+            connectedUsers: connectedUsers
+        });
     });
-    socket.on("new_user", function(msg){
+    socket.on("user_connected", function(data) {
+        console.log("a user is connected!");
         let exists = false;
         users.forEach(elmnt => {
-            if(elmnt.username === msg.username)
+            if(elmnt.username === data.username)
             {
                 exists = true;
             }
         });
         if(!exists)
-        {
-            users.push(User(msg.name,msg.password));
-            io.emit('new_user_event', msg);
+        {   let user = User(data.username, true);
+            users.push(user);
+            let connectedUsers = [];
+            users.forEach(user => {
+                if(user.isConnected)
+                {
+                    connectedUsers.push(user);
+                }
+            });
+            socket.id = data.username;
+            io.emit('new_user_event', {
+                connectedUsers: connectedUsers
+            });
+        } else {
+            let found = false;
+            
+            for(let i = 0; i < users.length && !found; i++) {
+                if(users[i].username === data.username)
+                {
+                    found = true;
+                    users[i] = User(data.username, true);
+                    console.log(users[i]);
+                }
+            }
+            let connectedUsers = [];
+            users.forEach(user => {
+                if(user.isConnected)
+                {
+                    connectedUsers.push(user);
+                }
+            });
+            socket.id = data.username;
+            io.emit('user_connection', {
+                connectedUsers: connectedUsers
+            });
         }
-    }); 
+    });
+
+    socket.on("chat_messages", function(data) {
+        io.emit(data.to, {
+            message: data.message
+        });
+    });
 });
 
 const port = 8000;

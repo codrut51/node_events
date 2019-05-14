@@ -25,22 +25,35 @@ class Chat extends React.Component {
       this.setState({message_to: element });
     }
 
-    new_user_event(object){
-      console.log(object.user);
+    async new_user_event(data){
+      const { connectedUsers } = data;
+      const { conversation } = window.localStorage;
+      let found = false;
+        for(let i = 0; i < connectedUsers.length && !found; i++) {
+            if(connectedUsers[i].username === conversation)
+            {
+                found = true;
+            }
+        }
+        if(!found) {
+          window.localStorage.removeItem("conversation");
+          this.setState({message_to: <Messages/>});
+        }
     }
 
     componentDidMount() {
-      console.log("here!");
+      let obj = {
+          username:  window.localStorage.getItem("username"),
+      }
+      Socket.emit("user_connected", obj);
+      Socket.on("user_connection", this.new_user_event);
+      Socket.on("new_user_event", this.new_user_event);
+      //conversation reffers to the username the user last clicked: eg. user1234117
       const { conversation } = window.localStorage;
       if(conversation !== undefined &&
          conversation !== null &&
          conversation !== "")
          {
-            Socket.on("new_user_event",this.new_user_event);
-            let obj = {
-                'user':  window.localStorage.getItem("username"),
-            }
-            Socket.emit("new_user", obj);
             this.setState({message_to: <Messages title={conversation}  socket={Socket}/>});
          }else{
             this.setState({message_to: <Messages/>});
@@ -53,7 +66,7 @@ class Chat extends React.Component {
             <div className="root" spacing={0}>
               <Header></Header>
               <Body>
-                <Users onClick={this.userClick}/>
+                <Users onClick={this.userClick} socket={Socket} />
                 {this.state.message_to}
               </Body>
               <Header></Header>

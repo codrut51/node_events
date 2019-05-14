@@ -12,7 +12,7 @@ export default class User extends Component {
         };
         return (
             <div className="user" onClick={() => onClick(event) }>
-                <p>{name}</p>
+                <div className="user_text">{name}</div>
             </div>
         )
     }

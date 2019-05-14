@@ -8,7 +8,11 @@ export default class Messages extends Component {
 
     componentDidMount() {
         const { name } = this.props;
-        this.setState({className: name});
+        if(name !== null &&
+           name !== "" &&
+           name !== undefined){
+                this.setState({className: name});
+           }
     }
 
     render() {
