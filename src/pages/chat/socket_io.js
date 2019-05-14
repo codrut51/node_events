@@ -14,7 +14,7 @@ class SocketClient {
     getInstace()
     {
         if(this.socket == null) {
-            this.socket = openSocket("http://"+ prepareUrls().ip +":5000");
+            this.socket = openSocket("http://212.178.84.26:5000");
         }
         return this.socket;
     }
