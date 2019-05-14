@@ -1,4 +1,7 @@
-const io = require('socket.io')();
+const express = require('express')
+const app = express();
+const http = require('http').createServer(app);
+const io = require('socket.io')(http);
 
 const User = (name, connected) => {
     let obj = {
@@ -87,6 +90,6 @@ io.on('connection', (socket) => {
     });
 });
 
-const port = 8000;
-io.listen(port);
-console.log('listening on port ', port);
+const PORT = process.env.PORT || 5000;
+const HOST = process.env.HOST || '0.0.0.0';
+http.listen(PORT, HOST, () => console.log(`Listening on http://${HOST}:${ PORT }`));
