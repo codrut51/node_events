@@ -12,9 +12,11 @@ class SocketClient {
 
     getInstace()
     {
-        if(this.socket == null) {
-            const host = process.env.HOST || "212.178.84.26";
-            this.socket = openSocket("https://"+host+":5000");
+        if(this.socket == null) { 
+            var host = window.location.origin.split(":");
+            host = host[0]+":"+host[1]+":5000";
+            console.log(host);
+            this.socket = openSocket(host); 
         }
         return this.socket;
     }
