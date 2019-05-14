@@ -4,6 +4,7 @@ import Body from '../components/body';
 import Users from "./components/users";
 import Messages from "./components/messages";
 import { Socket } from "./socket_io";
+import None from "./components/none";
 
 class Chat extends React.Component {
     state = {
@@ -16,29 +17,30 @@ class Chat extends React.Component {
       this.new_user_event = this.new_user_event.bind(this);
     } 
 
-    async userClick(event) {
+    userClick(event) {
       let userName = event.data.name;
-      console.log("Chat no: ",userName);
       window.localStorage.setItem("conversation",userName);
       let element = <Messages title={userName} socket={Socket}/>;
-      await this.setState({message_to: "" });
-      this.setState({message_to: element });
+      this.setState({message_to: <None/>}, function() {
+        this.setState({message_to: element });
+      });
     }
 
-    async new_user_event(data){
+    new_user_event(data){
       const { connectedUsers } = data;
       const { conversation } = window.localStorage;
       let found = false;
-        for(let i = 0; i < connectedUsers.length && !found; i++) {
-            if(connectedUsers[i].username === conversation)
-            {
-                found = true;
-            }
-        }
-        if(!found) {
-          window.localStorage.removeItem("conversation");
-          this.setState({message_to: <Messages/>});
-        }
+      for(let i = 0; i < connectedUsers.length && !found; i++) {
+          if(connectedUsers[i].username === conversation)
+          {
+              found = true;
+          }
+      }
+      if(!found) {
+        window.localStorage.removeItem("conversation");
+        this.setState({message_to: <None/>});
+        this.change = true;
+      }
     }
 
     componentDidMount() {
@@ -55,12 +57,15 @@ class Chat extends React.Component {
          conversation !== "")
          {
             this.setState({message_to: <Messages title={conversation}  socket={Socket}/>});
-         }else{
-            this.setState({message_to: <Messages/>});
+          }else{
+            this.setState({message_to: <None/>});
          }
     }
 
+
     render() {
+      this.change = false;
+      this.clickChange = false;
       return (
         <div id="content">
             <div className="root" spacing={0}>

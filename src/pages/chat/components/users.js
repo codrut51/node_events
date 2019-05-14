@@ -18,15 +18,12 @@ class Users extends React.Component {
         super();
         this.eventResponse = this.eventResponse.bind(this);
     }
-
-
-
     eventResponse(data) {
         const { connectedUsers } = data;
-        console.log(connectedUsers);
         let users = [];
         connectedUsers.forEach(user => {
-            if(user.username !== window.localStorage.getItem("username"))
+            if(user.username !== window.localStorage.getItem("username") &&
+                user.username !== null)
             {
                 let key = 0;
                 if(users.length !== 0)
