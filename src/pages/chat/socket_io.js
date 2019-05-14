@@ -1,5 +1,4 @@
 import openSocket from 'socket.io-client';
-import * as prepareUrls from "local-ip-url/prepareUrls" ;
 // const socket =  openSocket("http://localhost:8000");
 // socket.on('custom_event_response', this.eventResponse);
 // socket.emit('new_user', obj); 
@@ -14,7 +13,7 @@ class SocketClient {
     getInstace()
     {
         if(this.socket == null) {
-            this.socket = openSocket("http://212.178.84.26:5000");
+            this.socket = openSocket("https://userhang.herokuapp.com:5000");
         }
         return this.socket;
     }
