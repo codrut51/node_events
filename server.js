@@ -90,5 +90,5 @@ io.on('connection', (socket) => {
     });
 });
 
-const PORT = process.env.PORT || 5000;
+const PORT = 5000;
 http.listen(PORT, () => console.log(`Listening on http://localhost:${ PORT }`));
