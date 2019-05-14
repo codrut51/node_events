@@ -14,7 +14,7 @@ class SocketClient {
     {
         if(this.socket == null) {
             const host = process.env.HOST || "212.178.84.26";
-            this.socket = openSocket("http://"+host+":5000");
+            this.socket = openSocket("https://"+host+":5000");
         }
         return this.socket;
     }
