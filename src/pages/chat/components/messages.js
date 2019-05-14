@@ -31,7 +31,7 @@ export default class Messages extends Component {
         message: "",
         messages: []
     }
-
+    mounted = null;
     constructor() {
         super();
         this.sendMessage = this.sendMessage.bind(this);
@@ -49,7 +49,7 @@ export default class Messages extends Component {
         this.setState({messages: this.state.messages});
     }
 
-    async sendMessage() {
+    sendMessage() {
         const { message } = this.state;
         const { title } = this.props;
         if(message !== null &&
@@ -72,11 +72,17 @@ export default class Messages extends Component {
                 this.setState({messages: this.state.messages});
            }
     }
+
     componentDidUpdate() {
-        let messages_body = document.getElementById("messages_body");
-        messages_body.scrollTop = messages_body.scrollHeight;
+        if(this.mounted)
+        {
+            let messages_body = document.getElementById("messages_body");
+            messages_body.scrollTop = messages_body.scrollHeight;
+        }
     }
+
     componentDidMount(){
+        this.mounted = true;
         const { title } = this.props;
         if(title !== null &&
            title !== '' &&
@@ -105,6 +111,18 @@ export default class Messages extends Component {
                 this.sendMessage();
           }
         });
+    }
+
+    componentWillUnmount() {
+        this.mounted = false;
+        window.removeEventListener("keydown", (event) => {});
+        const { title } = this.props;
+        if(title !== null &&
+           title !== '' &&
+           title !== undefined)
+        {
+            this.socket.removeListener(window.localStorage.getItem("username")+"_"+title,this.receivedMessage, () => {});
+        }
     }
 
     onChange(event) {
