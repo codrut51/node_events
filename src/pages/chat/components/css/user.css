@@ -3,7 +3,7 @@
     height: 3vh;
     min-height: 25px;
     float: left;
-    border-top: 1.5px solid black;
+    border-bottom: 1.5px solid gray;
     color: white;
     text-align: left;
     user-select: none; 
