@@ -1,0 +1,82 @@
+.login {
+    grid-column: 2;
+    grid-row: 2;
+    background-color: rgb(172, 216, 255);
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 2fr 3fr 3fr 1fr 1fr 3fr;
+    grid-template-areas: 
+        "title title title"
+        "field1 field1 field1"
+        "field2 field2 field2"
+        ". . ."
+        ". . ."
+        "button button button";
+    overflow: hidden;
+    border-radius: 7%;
+    padding: 10px;
+    min-height: 0;  /* NEW */
+    min-width: 0;  
+}
+
+
+.title {
+    grid-area: title;
+    text-align: center;
+    font-size: 150%;
+    color: rgb(35, 35, 214);
+    font-style: oblique;
+    font-weight: bolder;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+
+#username {
+    grid-area: field1;
+    overflow: hidden;
+}
+
+#password {
+    margin-top: 10px;
+    grid-area: field2;
+    overflow: hidden;
+}
+
+.input { 
+    border: 0px;
+    border-bottom: 3px solid rgb(35, 35, 214);
+    font-size: 120%;
+    padding-left: 10px; 
+    min-height: 20px;
+    background-color:  rgba(194, 241, 255, 0.096);
+}
+
+.button { 
+    grid-area: button;
+    overflow: hidden;
+    font-size: 120%;
+    min-height: 20px;
+    background-color: aqua;
+    border: 1px solid blue;
+    border-radius: 5%;
+    font-style: normal;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-weight: bold;
+}
+
+::placeholder {
+    color: rgb(184, 35, 214);
+}
+
+@media (max-height: 513px) {
+
+    .title {
+        font-size: 90%;
+    }
+    .input {
+        font-size: 85%;
+    }
+    
+    .button {
+        font-size: 90%;
+    } 
+}

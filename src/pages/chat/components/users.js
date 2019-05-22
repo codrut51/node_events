@@ -63,14 +63,12 @@ class Users extends React.Component {
                                 to={{
                                     pathname:"/",
                                 }}
-                            /> : <div className="users">
-                                    <div className="users_title">
-                                        <h2>Users</h2>
-                                    </div>
+                            /> : <React.Fragment>
+                                    <h2 id="users_title">Users</h2>
                                     <div className="users_content">
                                         {this.state.users}
                                     </div>
-                            </div>
+                            </React.Fragment>
                     }
           />
       );

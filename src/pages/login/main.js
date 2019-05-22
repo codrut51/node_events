@@ -1,7 +1,9 @@
 import React from 'react';
 import Header from '../components/header';
+import Footer from '../components/footer';
 import Body from '../components/body';
 import Login from "./login";
+import "../css/main.css";
 
 class Main extends React.Component {
  
@@ -14,16 +16,22 @@ class Main extends React.Component {
   render() {
     return (
       <div id="content">
-        <div className="root">
-            <Header></Header>
-            <Body> 
-                <Login></Login>
-            </Body>
-            <Header></Header>
-        </div>
+        <Header></Header>
+        <Body> 
+          <Login></Login>
+        </Body>
+        <Footer></Footer>
       </div>
     );
   }
 }
 
+/*
+<div className="root">
+<Header></Header>
+<Body> 
+    <Login></Login>
+</Body>
+<Header></Header>
+</div> */
 export default Main;

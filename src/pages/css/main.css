@@ -1,0 +1,14 @@
+#content {
+    display: grid;
+    grid-template-columns: 1fr 19fr 1fr;
+    grid-template-rows: 1fr 19fr 1fr;
+    grid-template-areas: 
+        "header header header"
+        "one two three"
+        "footer footer footer";
+    width: 80vw;
+    height: 100%;
+    margin: 0 auto;
+    min-width: 320px;
+    min-height: 320px;
+}

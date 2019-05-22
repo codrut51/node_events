@@ -19,12 +19,12 @@ export default class None extends Component {
         return (
            
             <div className="messages">
-                <div className="messages_title">
+                {/* <div className="messages_title">
                 </div>
                 <div id="messages_body">
                 </div>
                 <div className="messages_input">
-                </div>
+                </div> */}
             </div>
         )
     }

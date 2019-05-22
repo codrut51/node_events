@@ -3,21 +3,22 @@
     grid-column: one / three;
     grid-row: one / three;
     display: grid;
-    grid-template-columns: 7fr 4fr 7fr;
-    grid-template-rows: 5fr 5fr 5fr;
+    grid-template-columns: 5fr 25fr;
+    grid-template-rows: 5fr 90fr 5fr;
+    border: 2px solid aquamarine;
     overflow: hidden;
-    min-height: 0;  /* NEW */
-    min-width: 0;  
+    min-height: 280px;  /* NEW */
+    min-width: 320px;  
 } 
 
-@media (max-width: 1041px){
+/* @media (max-width: 1041px){
     .body {
         grid-column: one / three;
         grid-row: one / three;
         display: grid;
-        grid-template-columns: 2fr 5.2fr 2fr;
+        grid-template-columns: 2fr 5fr 5fr;
         overflow: hidden;
-        min-height: 0;  /* NEW */
+        min-height: 0;  
         min-width: 0;  
     } 
 }
@@ -27,9 +28,9 @@
         grid-column: one / three;
         grid-row: one / three;
         display: grid;
-        grid-template-rows: 2fr 5fr 2fr;
+        grid-template-rows: 2fr 5fr 5fr;
         overflow: hidden;
-        min-height: 0;  /* NEW */
+        min-height: 0;  
         min-width: 0;  
     } 
-}
+} */

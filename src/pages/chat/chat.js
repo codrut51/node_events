@@ -1,6 +1,7 @@
 import React from 'react';
 import Header from '../components/header';
-import Body from '../components/body';
+import Footer from '../components/footer';
+import ChatBody from '../components/chat_body';
 import Users from "./components/users";
 import Messages from "./components/messages";
 import { Socket } from "./socket_io";
@@ -68,14 +69,12 @@ class Chat extends React.Component {
       this.clickChange = false;
       return (
         <div id="content">
-            <div className="root" spacing={0}>
               <Header></Header>
-              <Body>
+              <ChatBody>
                 <Users onClick={this.userClick} socket={Socket} />
                 {this.state.message_to}
-              </Body>
-              <Header></Header>
-            </div>
+              </ChatBody>
+              <Footer></Footer>
         </div>
       );
     }
