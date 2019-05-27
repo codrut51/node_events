@@ -13,12 +13,8 @@ class SocketClient {
     getInstace()
     {
         if(this.socket == null) { 
-<<<<<<< HEAD
-            // let host  = "http://localhost:5000";
-=======
->>>>>>> 83fc5771b866034d5f81536561989ffdce578583
-            let host = "https://socket-io-serve.herokuapp.com";
-            console.log(host);
+            let host  = "http://localhost:5000";
+            // let host = "https://socket-io-serve.herokuapp.com";
             this.socket = openSocket(host); 
         }
         return this.socket;

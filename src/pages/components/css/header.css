@@ -1,14 +1,7 @@
 .header {
-<<<<<<< HEAD
     grid-area: header;
 }
 .footer {
     grid-area: footer;
-=======
-    width: 100%;
-    height: 5%;
-    float: left;
-    min-width: 400px;
->>>>>>> 83fc5771b866034d5f81536561989ffdce578583
 }
  

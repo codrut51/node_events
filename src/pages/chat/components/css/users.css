@@ -23,7 +23,7 @@
 }
 .users_content {
     grid-column: 1;
-    grid-row: 2;
+    grid-row: 2 / 4;
     overflow: auto;
     overflow-x: hidden;
 }

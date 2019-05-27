@@ -1,10 +1,5 @@
 import React from 'react';
-<<<<<<< HEAD
 import "../css/login.css";
-=======
-import "./css/login.css";
-import Button from '@material-ui/core/Button';
->>>>>>> 83fc5771b866034d5f81536561989ffdce578583
 import { 
     Route,
     Redirect
@@ -78,7 +73,6 @@ export default class Login extends React.Component {
                                 }}
                             /> :
                             <div className="login">
-<<<<<<< HEAD
                                 <h2 className="title">Login</h2>
                                 <input type="text" name="username"  
                                         className="input"
@@ -93,32 +87,6 @@ export default class Login extends React.Component {
                                 <button variant="contained" color="primary" className="button" onClick={(e) => this.loginClick(e)} >
                                     Register & Login
                                 </button>
-=======
-                                <div className="title_placeholder">
-                                    <h2 className="title">Login</h2>
-                                </div>
-                                <div className="input_placeholder">
-                                    <span className="textfiled_placeholder">
-                                        <input type="text" name="username" className="input" 
-                                               id="username" value={this.state.username} 
-                                               placeholder="Username" 
-                                               onChange={(e) => this.onChange('name', e)}/>
-                                    </span>
-                                    <span className="textfiled_placeholder">
-                                        <input type="password" name="password" className="input" 
-                                               id="password" value={this.state.password} 
-                                               placeholder="Password" 
-                                               onChange={(e) => this.onChange('password', e)}/>
-                                    </span>
-                                </div>
-                                <div className="textfiled_placeholder">
-                                    <span className="btn_placeholder">
-                                        <Button variant="contained" color="primary" className="button" onClick={(e) => this.loginClick(e)} >
-                                            Register & Login
-                                        </Button>
-                                    </span>
-                                </div>
->>>>>>> 83fc5771b866034d5f81536561989ffdce578583
                             </div>
                     }
           />

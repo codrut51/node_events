@@ -1,7 +1,7 @@
 import React from 'react';
 import Header from '../components/header';
 import Footer from '../components/footer';
-import ChatBody from '../components/chat_body';
+import Body from '../components/body';
 import Users from "./components/users";
 import Messages from "./components/messages";
 import { Socket } from "./socket_io";
@@ -37,11 +37,11 @@ class Chat extends React.Component {
               found = true;
           }
       }
-      if(!found) {
-        window.localStorage.removeItem("conversation");
-        this.setState({message_to: <None/>});
-        this.change = true;
-      }
+      // if(!found) {
+      //   window.localStorage.removeItem("conversation");
+      //   this.setState({message_to: <None/>});
+      //   this.change = true;
+      // }
     }
 
     componentDidMount() {
@@ -63,6 +63,9 @@ class Chat extends React.Component {
          }
     }
 
+    componentWillUnmount() {
+      Socket.removeAllListeners();
+    }
 
     render() {
       this.change = false;
@@ -70,10 +73,10 @@ class Chat extends React.Component {
       return (
         <div id="content">
               <Header></Header>
-              <ChatBody>
+              <Body className="body1">
                 <Users onClick={this.userClick} socket={Socket} />
                 {this.state.message_to}
-              </ChatBody>
+              </Body>
               <Footer></Footer>
         </div>
       );

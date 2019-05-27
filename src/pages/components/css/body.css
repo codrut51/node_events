@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-
 .body {
     grid-column: one / three;
     grid-row: one / three;
@@ -9,6 +7,18 @@
     overflow: hidden;
     min-height: 0;  /* NEW */
     min-width: 0;  
+} 
+
+.body1 {
+    grid-column: one / three;
+    grid-row: one / three;
+    display: grid;
+    grid-template-columns: 5fr 25fr;
+    grid-template-rows: 5fr 90fr 5fr;
+    border: 2px solid aquamarine;
+    overflow: hidden;
+    min-height: 280px;  /* NEW */
+    min-width: 320px;  
 } 
 
 @media (max-width: 1041px){
@@ -34,16 +44,3 @@
         min-width: 0;  
     } 
 }
-=======
-.body {
-    width: 100%;
-    height: 90%;
-    float: left;
-    min-width: 400px;
-    min-height: 135px;
-    border-top-left-radius: 2%;
-    border-top-right-radius: 2%;
-    border-bottom-right-radius: 2%;
-    background-color: aliceblue;
-} 
->>>>>>> 83fc5771b866034d5f81536561989ffdce578583

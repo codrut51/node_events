@@ -41,7 +41,6 @@ export default class Messages extends Component {
     }
 
     receiveState(obj) {
-        console.log(obj);
         if(obj.typing !== undefined)
         {
             if(obj.typing) {
@@ -54,24 +53,24 @@ export default class Messages extends Component {
                 });
             }
         }
-        this.setState({titleComponent: null}, () => {
-            this.setState({titleComponent: 
-                <div className="message_title_placeholder">
-                    <div className="message_title_icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" className="message_title_icon1" viewBox="0 0 24 24">
-                            <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/>
-                        </svg>
-                    </div>
-                    <div className="message_title_details"> 
-                        <div className="message_title_username">
-                            <h3 id="message_title">Username: {this.props.title} </h3>
-                        </div>
-                        <div className="message_title_status">
-                            <p>{this.state.message_state}</p>
-                        </div>
-                    </div>
-                </div>});
-        });
+        // this.setState({titleComponent: null}, () => {
+        //     this.setState({titleComponent: 
+        //         <div className="message_title_placeholder">
+        //             <div className="message_title_icon">
+        //                 <svg xmlns="http://www.w3.org/2000/svg" className="message_title_icon1" viewBox="0 0 24 24">
+        //                     <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/>
+        //                 </svg>
+        //             </div>
+        //             <div className="message_title_details"> 
+        //                 <div className="message_title_username">
+        //                     <h3 id="message_title">Username: {this.props.title} </h3>
+        //                 </div>
+        //                 <div className="message_title_status">
+        //                     <p>{this.state.message_state}</p>
+        //                 </div>
+        //             </div>
+        //         </div>});
+        // });
     }
 
     receivedMessage(obj) {
@@ -112,8 +111,8 @@ export default class Messages extends Component {
     componentDidUpdate() {
         if(this.mounted)
         {
-            // let messages_body = document.getElementById("messages_body");
-            // messages_body.scrollTop = messages_body.scrollHeight;
+            let messages_body = document.getElementById("messages_body");
+            messages_body.scrollTop = messages_body.scrollHeight;
         }
     }
 
@@ -144,7 +143,7 @@ export default class Messages extends Component {
             });
             this.socket = this.props.socket;
             this.socket.on(window.localStorage.getItem("username")+"_"+title,this.receivedMessage);
-            this.socket.on(`typing_${window.localStorage.getItem("username")}`,this.receiveState);
+            this.socket.on(`typing_${window.localStorage.getItem("username")}_${title}`,this.receiveState);
             // for(let i = 100; i < 190; i++)
             // {
             //     let message = "Vivamus ac eros eleifend, commodo erat ut, elementum eros. Morbi ornare tortor sed elit viverra, nec commodo tortor lobortis. Nulla nec elementum tortor. Phasellus diam libero, vestibulum ac pharetra et, imperdiet id risus. Aenean tincidunt quam eu egestas faucibus. Donec gravida neque at ullamcorper dignissim. In finibus, nunc in finibus feugiat, erat eros vehicula leo, nec suscipit augue mi eget lectus."+i;
@@ -162,6 +161,7 @@ export default class Messages extends Component {
                 this.sendMessage();
           } else {
               let obj = {
+                  from: window.localStorage.getItem("username"),
                   to: title,
                   username: window.localStorage.getItem("username")
                 };
@@ -178,8 +178,7 @@ export default class Messages extends Component {
            title !== '' &&
            title !== undefined)
         {
-            this.socket.removeListener(window.localStorage.getItem("username")+"_"+title,this.receivedMessage, () => {});
-            this.socket.removeListener(`typing_${window.localStorage.getItem("username")}`,this.receivedMessage, () => {});
+            this.socket.removeAllListeners();
         }
     }
 
@@ -196,8 +195,22 @@ export default class Messages extends Component {
                         <path d="M12 5.9c1.16 0 2.1.94 2.1 2.1s-.94 2.1-2.1 2.1S9.9 9.16 9.9 8s.94-2.1 2.1-2.1m0 9c2.97 0 6.1 1.46 6.1 2.1v1.1H5.9V17c0-.64 3.13-2.1 6.1-2.1M12 4C9.79 4 8 5.79 8 8s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 9c-2.67 0-8 1.34-8 4v3h16v-3c0-2.66-5.33-4-8-4z"/><path d="M0 0h24v24H0z" fill="none"/>
                     </svg>
                     <div className="user_details">
-                        <h3 id="title">User: {this.props.title}</h3>
+                        <h3 id="user_title">User: {this.props.title}</h3>
+                        <h5 id="user_message_status">{this.state.message_state}</h5>
                     </div>
+                </div>
+                <div id="messages_body">
+                    {this.state.messages}
+                </div>
+                <div id="input_fields">
+                    <input type="text" name="message" 
+                                id="messages_input"
+                                value={this.state.message} 
+                                onChange={(e) => this.onChange(e)}
+                                />
+                    <Button variant="contained" color="primary" className="message_button" onClick={(e) => this.sendMessage(e)} >
+                        <p className="message_button1">Send</p>
+                    </Button>
                 </div>
             </React.Fragment>
         )
