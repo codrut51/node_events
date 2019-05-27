@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 .body {
     grid-column: one / three;
@@ -33,3 +34,16 @@
         min-width: 0;  
     } 
 }
+=======
+.body {
+    width: 100%;
+    height: 90%;
+    float: left;
+    min-width: 400px;
+    min-height: 135px;
+    border-top-left-radius: 2%;
+    border-top-right-radius: 2%;
+    border-bottom-right-radius: 2%;
+    background-color: aliceblue;
+} 
+>>>>>>> 83fc5771b866034d5f81536561989ffdce578583

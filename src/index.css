@@ -20,6 +20,20 @@ code {
 #root {
   width: 100vw;
   height: 100vh;
+<<<<<<< HEAD
   min-width: 320px;
   min-height: 320px;
 } 
+=======
+  min-width: 400px;
+  min-height: 150px;
+} 
+
+.root {
+  width: 80vw;
+  height: 100vh;
+  margin: 0 auto;
+  min-width: 400px;
+  min-height: 150px;
+}
+>>>>>>> 83fc5771b866034d5f81536561989ffdce578583
